@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import AuthContext from '../context/AuthContext';
 
 const SignUp = () => {
-    const {UserSignup,setUser} = useContext(AuthContext);
+    const {UserSignup,setUser,googleUser} = useContext(AuthContext);
     const navigate = useNavigate();
 
 
@@ -47,6 +47,18 @@ const SignUp = () => {
             toast.error(error.message);
         })
 
+    }
+
+    const handleGoogleUser = () =>{
+        googleUser()
+        .then((result)=>{
+            const user = result.user;
+            setUser(user);
+            navigate("/");
+        })
+        .catch((error)=>{
+            toast.error(error);
+        })
     }
 
 
@@ -102,12 +114,13 @@ const SignUp = () => {
                 <div className="form-control mt-6">
                     <button className="btn bg-[rgb(14,87,101)] text-gray-100 font-bold hover:bg-white hover:border-2 hover:text-[rgb(14,87,101)] hover:border-[rgb(14,87,101)]">Sign Up</button>
                 </div>
-                <p>
-                <button 
-                // onClick={handleLoginWithGoogle} 
-                className="btn btn-ghost hover:bg-[rgb(14,87,101)] hover:text-gray-100 font-bold bg-white hover:border-3 text-[rgb(14,87,101)] border-[rgb(14,87,101)] w-full mt-2"> <img className='w-9' src="https://i.ibb.co.com/zrRYpv8/icons8-google-120.png" alt="" />Sign Up With Google</button>
-            </p>
             </form>
+
+            <p>
+                <button 
+                onClick={handleGoogleUser} 
+                className="btn btn-ghost hover:bg-[rgb(14,87,101)] hover:text-gray-100 font-bold bg-white hover:border-3 text-[rgb(14,87,101)] border-[rgb(14,87,101)] w-full mb-4"> <img className='w-9' src="https://i.ibb.co.com/zrRYpv8/icons8-google-120.png" alt="" />Sign Up With Google</button>
+            </p>
             <p className="text-center font-medium font-headingFont">Have an account already? <Link className="text-[rgb(14,87,101)]" to="/signin">Please Sign In!!</Link></p>
         </div>
     </div>
