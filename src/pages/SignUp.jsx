@@ -34,7 +34,7 @@ const SignUp = () => {
             const user = result.user;
             // console.log(user);
             setUser(user);
-            toast.success("Successfully Signup!!")
+            toast.success("Successfully Signup!!");
             updateProfileUser({displayName: name, photoURL: photo})
             .then(()=>{
                 navigate("/")
