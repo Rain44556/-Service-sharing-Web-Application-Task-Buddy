@@ -6,8 +6,8 @@ import AuthContext from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
 
-const Login = () => {
-    const {userLogin,setUser} = useContext(AuthContext);
+const SignIn = () => {
+    const {userSignIn,setUser} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -16,7 +16,7 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        userLogin(email,password)
+        userSignIn(email,password)
         .then((result)=>{
             const user = result.user;
             // console.log(user);
@@ -36,25 +36,25 @@ const Login = () => {
         </div>
 
         <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-md p-10 rounded-none">
-            <h1 className="font-semibold text-center text-3xl">Login Form</h1>
+            <h1 className="font-semibold text-center text-3xl font-headingFont text-[rgb(14,87,101)]">Sign In</h1>
             <form 
             onSubmit={handleLoginUser}
              className="card-body ">
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Email</span>
+                        <span className="label-text font-headingFont">Email</span>
                     </label>
-                    <input name="email" type="email" placeholder="email" className="input input-bordered" required />
+                    <input name="email" type="email" placeholder="email" className="input input-bordered border-[rgb(14,87,101)]" required />
                 </div>
 
                 <div className="form-control relative">
                     <label className="label">
-                        <span className="label-text">Password</span>
+                        <span className="label-text font-headingFont">Password</span>
                     </label>
                     <input name="password"
                         placeholder="password"
-                        className="input input-bordered"
+                        className="input input-bordered border-[rgb(14,87,101)]"
                         required />
                
                     <label className="label">
@@ -63,18 +63,18 @@ const Login = () => {
                 </div>
 
                 <div className="form-control mt-6">
-                    <button className="btn bg-gradient-to-r from-gray-200 via-gray-300 to-gray-400">Login</button>
+                    <button className="btn bg-[rgb(14,87,101)] text-gray-100 font-bold hover:bg-white hover:border-2 hover:text-[rgb(14,87,101)] hover:border-[rgb(14,87,101)]">Sign In</button>
                 </div>
-            </form>
-            <p className="text-center font-medium">Don't have an account? <Link className="text-blue-700" to="/signup">Please Signup!!</Link></p>
-            <p>
+                <p>
                 <button 
                 // onClick={handleLoginWithGoogle} 
-                className="btn btn-ghost border-gray-400 w-full my-3"> <img className='w-9' src="https://img.icons8.com/?size=100&id=KF0a7tvdESBd&format=png&color=000000" alt="" />Google</button>
+                className="btn btn-ghost hover:bg-[rgb(14,87,101)] hover:text-gray-100 font-bold bg-white hover:border-3 text-[rgb(14,87,101)] border-[rgb(14,87,101)] w-full mt-2"> <img className='w-9' src="https://i.ibb.co.com/zrRYpv8/icons8-google-120.png" alt="" />Sign In With Google</button>
             </p>
+            </form>
+            <p className="text-center font-medium font-headingFont">Have no Account? <Link className="text-[rgb(14,87,101)]" to="/signup">Kindly Signup today!!!</Link></p>
         </div>
     </div>
     );
 };
 
-export default Login;
+export default SignIn;

@@ -12,12 +12,12 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth,email,password)
     };
 
-    const userLogin = (email, password)=>{
+    const userSignIn = (email, password)=>{
         setLoading(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
 
-    const userLogout = ()=>{
+    const userSignOut = ()=>{
         setLoading(true);
         return signOut(auth);
     }
@@ -27,8 +27,8 @@ const AuthProvider = ({children}) => {
         setUser,
         loading,
         UserSignup,
-        userLogin,
-        userLogout,
+        userSignIn,
+        userSignOut,
 
     }
 

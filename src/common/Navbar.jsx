@@ -1,28 +1,37 @@
 import React, { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 import { Link, NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
-    const { user, userLogout } = useContext(AuthContext);
+    const { user, userSignOut } = useContext(AuthContext);
     const menuLinks = <>
-        <NavLink className="px-6" to="/">Home</NavLink>
-        <NavLink className="px-6" to="/Services">Services</NavLink>
+        <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/">Home</NavLink>
+        <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/Services">Services</NavLink>
     </>
 
     const dashBoardRoutes = <>
         {user && <>
-            <NavLink className="px-6" to="/AddService">Add Service</NavLink>
-            <NavLink className="px-6" to="/ManageService">Manage Service</NavLink>
-            <NavLink className="px-6" to="/BookedService">Booked Service</NavLink>
-            <NavLink className="px-6" to="/ServiceToDo">Service To-Do</NavLink>
+            <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/AddService">Add Service</NavLink>
+            <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/ManageService">Manage Service</NavLink>
+            <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/BookedService">Booked Service</NavLink>
+            <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/ServiceToDo">Service To-Do</NavLink>
         </>
         }
-
     </>
 
+const handleSignOutUser = () =>{
+    userSignOut()
+    .then(()=>{
+        toast.success("Sign Out Successfully");
+    })
+    .catch(err =>{
+        toast.error(err,'Failed to Sign Out');
+    })
+}
 
     return (
-        <div className="navbar mx-auto sticky top-0 z-50 backdrop-blur-md shadow-md">
+        <div className="navbar font-headingFont mx-auto sticky top-0 z-50 backdrop-blur-md shadow-md ">
             <div className="navbar-start">
                 <Link to="/">
                     <img
@@ -32,7 +41,7 @@ const Navbar = () => {
                 </Link>
             </div>
 
-            <div className="navbar-center hidden lg:flex p-2 rounded-full font-semibold text-gray-400">
+            <div className="navbar-center hidden lg:flex p-2 rounded-full font-semibold text-gray-400 ">
                 <ul className="menu menu-horizontal px-1">
                     {menuLinks}
 
@@ -40,9 +49,9 @@ const Navbar = () => {
                 {
                     user && user?.email ?
                     (
-                        <div className="dropdown dropdown-hover">
-                        <div tabIndex={0} role='button' >Dashboard</div>
-                        <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                        <div className="dropdown dropdown-hover ">
+                        <div tabIndex={0} role='button' className='px-6 py-2 hover:text-white hover:bg-slate-800'>Dashboard</div>
+                        <ul tabIndex={0} className="dropdown-content menu bg-[rgb(14,87,100)] rounded-box z-[1] w-52 p-2 shadow">
                             {dashBoardRoutes}
                         </ul>
                     </div>
@@ -98,12 +107,12 @@ const Navbar = () => {
                                 {user?.displayName}
                             </div>
 
-                            <div><button onClick={userLogout}
-                                className="btn rounded-md bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] hover:bg-gray-900 text-gray-200 ">
-                                Logout</button></div>
+                            <div><button onClick={handleSignOutUser}
+                                className="btn rounded-md bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] hover:bg-gray-900 text-gray-50 ">
+                                Sign Out</button></div>
 
                         </div>) :
-                        <Link className="btn px-10 py-3 text-white bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] mx-4 rounded-md" to="/login">Login</Link>
+                        <Link className="btn px-10 py-3 text-white bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] mx-4 rounded-md" to="/signin">Sign In</Link>
                     }
                 </ul>
             </div>
