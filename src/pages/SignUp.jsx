@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import AuthContext from '../context/AuthContext';
 
 const SignUp = () => {
-    const {UserSignup,setUser,googleUser} = useContext(AuthContext);
+    const {UserSignup,setUser,googleUser, updateProfileUser} = useContext(AuthContext);
     const navigate = useNavigate();
 
 
@@ -31,6 +31,21 @@ const SignUp = () => {
 
         UserSignup(email, password)
         .then(result =>{
+            const userInDB = {name, email, photo};
+            fetch('http://localhost:5000/users',{
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userInDB)
+            })
+            .then(res => res.json())
+            .then(data =>{
+                if(data.insertedId){
+                    alert("created in DB")
+                }
+            })
+
             const user = result.user;
             // console.log(user);
             setUser(user);

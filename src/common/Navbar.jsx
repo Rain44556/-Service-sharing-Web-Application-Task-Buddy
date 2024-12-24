@@ -7,13 +7,13 @@ const Navbar = () => {
     const { user, userSignOut } = useContext(AuthContext);
     const menuLinks = <>
         <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/">Home</NavLink>
-        <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/Services">Services</NavLink>
+        <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/AllServices">Services</NavLink>
     </>
 
     const dashBoardRoutes = <>
         {user && <>
             <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/AddService">Add Service</NavLink>
-            <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/ManageService">Manage Service</NavLink>
+            <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/ManageServices">Manage Service</NavLink>
             <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/BookedService">Booked Service</NavLink>
             <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/ServiceToDo">Service To-Do</NavLink>
         </>

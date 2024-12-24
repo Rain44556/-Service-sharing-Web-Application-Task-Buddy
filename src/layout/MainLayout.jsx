@@ -6,10 +6,12 @@ import Footer from '../common/Footer';
 
 const MainLayout = () => {
     return (
-        <div className='max-w-7xl mx-auto'>
+        <div>
+            <div className='max-w-7xl mx-auto'>
             <Navbar></Navbar>
             <Outlet></Outlet>
-            <Footer></Footer>
+        </div>
+        <Footer></Footer>
         </div>
     );
 };

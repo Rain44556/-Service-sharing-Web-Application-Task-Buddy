@@ -129,7 +129,7 @@ const Banner = () => {
                                 animate="visible"
                                 transition={{ delay: 0.8 }}
                                 className="px-6 py-3 bg-white text-yellow-600 font-semibold rounded-lg hover:bg-gray-200 transition duration-300">
-                               <Link to="/signin"> Explore Now</Link>
+                               <Link to="/signin">Explore Now</Link>
                             </motion.button>
                         </div>
                     </div>
