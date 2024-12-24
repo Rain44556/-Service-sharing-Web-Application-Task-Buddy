@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PopularServicesCard = ({popularService}) => {
-    const { serviceImage, serviceName, serviceDescription, viewDetailButton, serviceProvider, servicePrice } = popularService;
+    const { _id, serviceImage, serviceName, serviceDescription, viewDetailButton, serviceProvider, servicePrice } = popularService;
     return (
         <div className="border rounded-lg shadow-md p-4 bg-white">
       <img
@@ -23,9 +23,9 @@ const PopularServicesCard = ({popularService}) => {
         </div>
         <div className="flex justify-between items-center mt-4">
           <span className="text-lg font-bold text-[#004d4f]">{servicePrice}</span>
-         <button className="bg-[#004d4f] text-white px-4 py-2 rounded-md hover:bg-[#007d80] transition duration-300">
+          <Link to={`/singleServiceDetails/${_id}`}><button className="bg-[#004d4f] text-white px-4 py-2 rounded-md hover:bg-[#007d80] transition duration-300">
             {viewDetailButton}
-          </button>
+          </button></Link>
         </div>
       </div>
     </div>

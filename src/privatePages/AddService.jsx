@@ -11,13 +11,13 @@ const AddService = () => {
 const handleAddService = (e)=>{
     e.preventDefault();
 
-    const imageUrl = e.target.imageUrl.value;
+    const serviceImage = e.target.imageUrl.value;
     const serviceName = e.target.serviceName.value;
-    const price = e.target.price.value;
+    const servicePrice = e.target.price.value;
     const serviceArea = e.target.serviceArea.value;
-    const description = e.target.description.value;
+    const serviceDescription = e.target.description.value;
 
-const addedServices = {imageUrl,serviceName,price,serviceArea,description};
+const addedServices = {serviceImage,serviceName,servicePrice,serviceArea,serviceDescription};
 
 fetch('http://localhost:5000/services', {
     method: "POST",
