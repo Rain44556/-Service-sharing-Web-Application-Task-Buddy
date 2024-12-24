@@ -23,9 +23,9 @@ const PopularServicesCard = ({popularService}) => {
         </div>
         <div className="flex justify-between items-center mt-4">
           <span className="text-lg font-bold text-[#004d4f]">{servicePrice}</span>
-          <Link to="/signin"><button className="bg-[#004d4f] text-white px-4 py-2 rounded-md hover:bg-[#007d80] transition duration-300">
+         <button className="bg-[#004d4f] text-white px-4 py-2 rounded-md hover:bg-[#007d80] transition duration-300">
             {viewDetailButton}
-          </button></Link>
+          </button>
         </div>
       </div>
     </div>

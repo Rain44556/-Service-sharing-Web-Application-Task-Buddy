@@ -10,7 +10,9 @@ import AddService from "../privatePages/AddService";
 import ManageServices from "../privatePages/ManageServices";
 import BookedService from "../privatePages/BookedService";
 import ServiceToDo from "../privatePages/ServiceToDo";
+import PrivateRoute from "./PrivateRoute";
 import AllServices from "../pages/AllServices";
+import SingleServiceDetails from "../privatePages/SingleServiceDetails";
 
 const router = createBrowserRouter([
   {
@@ -31,24 +33,28 @@ const router = createBrowserRouter([
         element: <SignIn></SignIn>
       },
       {
-        path: '/AllServices',
+        path: '/services',
         element: <AllServices></AllServices>
       },
       {
+        path: '/services/:id',
+        element: <PrivateRoute><SingleServiceDetails></SingleServiceDetails></PrivateRoute>
+      },
+      {
         path: '/AddService',
-        element: <AddService></AddService>
+        element: <PrivateRoute><AddService></AddService></PrivateRoute>
       },
       {
         path: '/ManageServices',
-        element: <ManageServices></ManageServices>
+        element: <PrivateRoute><ManageServices></ManageServices></PrivateRoute>
       },
       {
         path: '/BookedService',
-        element: <BookedService></BookedService>
+        element: <PrivateRoute><BookedService></BookedService></PrivateRoute>
       },
       {
         path: '/ServiceToDo',
-        element: <ServiceToDo></ServiceToDo>
+        element: <PrivateRoute><ServiceToDo></ServiceToDo></PrivateRoute>
       },
     ]
   },

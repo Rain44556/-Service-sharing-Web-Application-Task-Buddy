@@ -6,7 +6,7 @@ const PopularServices = () => {
     const [popularServices, setPopularService] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:5000/services')
+        fetch('http://localhost:5000/services/popular')
         .then(res => res.json())
         .then(data => {
             setPopularService(data);
@@ -26,7 +26,7 @@ const PopularServices = () => {
             }
            </div>
            <div className='flex justify-center mt-10'>
-            <Link to="/AllServices"><button className='btn w-96 bg-[#004d4f] hover:bg-[#003e3f] text-white px-6 py-8 rounded-lg' >Show All Services</button></Link>
+            <Link to="/services"><button className='btn w-96 bg-[#004d4f] hover:bg-[#003e3f] text-white px-6 py-8 rounded-lg' >Show All Services</button></Link>
            </div>
         </div>
     );

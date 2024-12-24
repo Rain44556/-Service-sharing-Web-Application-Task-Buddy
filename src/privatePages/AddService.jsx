@@ -36,7 +36,7 @@ fetch('http://localhost:5000/services', {
                 icon: 'success',
                 confirmButtonText: 'Added'
             })
-            navigate("/AllServices");
+            navigate("/services");
         }
     })
     .catch(err=>{
