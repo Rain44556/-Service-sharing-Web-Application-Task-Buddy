@@ -1,10 +1,29 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../common/Navbar';
 import Footer from '../common/Footer';
 
 
 const MainLayout = () => {
+
+    const location = useLocation();
+
+    useEffect(() => {
+      const pageTitle = {
+        "/": "Home | Task BBuddy",
+        "/services": "All Services | Task Buddy",
+        "/AddService": "Add Service | Task Buddy",
+        "/ManageServices": "Manage Services | Task Buddy",
+        "/singleServiceDetails/:id": "Single Service Details | Task Buddy",
+        "/BookedService": "Booked Service | Task Buddy",
+        "/ServiceToDo": "/Service To-DO | Task Buddy",
+        "/signin": "Signin | Task Buddy ",
+        "/signup": "Signup | Task Buddy ",
+      };
+  
+      const currentPageTitle = pageTitle[location.pathname] || "Task Buddy"
+      document.title = currentPageTitle;
+    }, [location]);
     return (
         <div>
             <div className='max-w-7xl mx-auto'>

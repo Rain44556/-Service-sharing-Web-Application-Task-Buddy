@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AllServicesCard = ({service}) => {
-    const { _id, serviceImage, serviceName, serviceDescription, serviceArea, serviceProvider, servicePrice } = service;
-    console.log(service)
+    const { _id, serviceImage, serviceName, serviceDescription, serviceArea, serviceProvider, providerImage, providerName, servicePrice } = service;
+    // console.log(service)
     return (
         <div className='className="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-start'>
             
@@ -37,10 +37,10 @@ const AllServicesCard = ({service}) => {
 
                 <div className="flex items-center justify-between">
                   <p className="text-xl font-bold text-teal-700">
-                    {servicePrice}
+                    $ {servicePrice}
                   </p>
                 </div>
-               <Link to={`/singleServiceDetails/$${_id}`}> <button className="btn px-4 py-2 w-full hover:border-2 hover:border-[#004d4f] hover:text-teal-900 font-bodyFont font-bold mt-4 rounded-lg text-white bg-[#166366] hover:bg-[#618a8c]">
+               <Link to={`/singleServiceDetails/${_id}`}> <button className="btn px-4 py-2 w-full hover:border-2 hover:border-[#004d4f] hover:text-teal-900 font-bodyFont font-bold mt-4 rounded-lg text-white bg-[#166366] hover:bg-[#618a8c]">
                     View Details
                   </button></Link>
               </div>
