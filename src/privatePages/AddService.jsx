@@ -24,7 +24,13 @@ fetch('http://localhost:5000/services', {
     headers: {
         'content-type': 'application/json'
     },
-    body: JSON.stringify({...addedServices, providerName: user?.displayName, providerImage: user?.photoURL, providerEmail: user.email})
+    body: JSON.stringify({...addedServices, 
+      serviceProvider:{
+        providerName: user.displayName, 
+        providerImage: user.photoURL, 
+        providerEmail: user.email
+      }
+      })
 })
     .then(res => {
         return res.json()})

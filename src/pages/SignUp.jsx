@@ -41,9 +41,9 @@ const SignUp = () => {
             })
             .then(res => res.json())
             .then(data =>{
-                if(data.insertedId){
-                    alert("created in DB")
-                }
+                // if(data.insertedId){
+                //     alert("created in DB")
+                // }
             })
 
             const user = result.user;

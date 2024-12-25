@@ -5,7 +5,7 @@ const AllServicesCard = ({service}) => {
     const { _id, serviceImage, serviceName, serviceDescription, serviceArea, serviceProvider, providerImage, providerName, servicePrice } = service;
     // console.log(service)
     return (
-        <div className='className="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-start'>
+        <div className='bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-start'>
             
             <img
                 src={serviceImage}
@@ -21,13 +21,13 @@ const AllServicesCard = ({service}) => {
 
                 <div className="flex items-center mb-4">
                   <img
-                    // src={serviceProvider.providerImage}
-                    // alt={serviceProvider.providerName}
-                    className="w-10 h-10 rounded-full mr-3"
+                    src={serviceProvider.providerImage}
+                    alt={serviceProvider.providerName}
+                    className="w-10 h-10 rounded-full mr-3 object-cover"
                   />
                   <div>
                     <p className="text-gray-800 font-semibold">
-                      {/* {serviceProvider.providerName} */}
+                      {serviceProvider.providerName}
                     </p>
                     <p className="text-gray-500 text-sm">
                         {serviceArea}
