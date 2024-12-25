@@ -2,17 +2,18 @@ import { useState } from "react";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import Modal from 'react-modal';
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ManageServicesCard = ({ manageService, handleDelete, handleUpdate }) => {
-    
+
     const { _id,
         serviceImage,
         serviceName,
         serviceDescription,
         serviceArea,
         servicePrice } = manageService;
-
-
+        const navigate = useNavigate();
 
 
     //Modal For Edit services
@@ -20,18 +21,18 @@ const ManageServicesCard = ({ manageService, handleDelete, handleUpdate }) => {
 
     const customStyles = {
         content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-          width: '400px',
-          height: '500px',
-          background: '#c7dede',
-          border: 'rounded'
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            width: '400px',
+            height: '500px',
+            background: '#c7dede',
+            border: 'rounded'
         },
-      };
+    };
 
     function openModal() {
         setOpenUpdatedModal(true);
@@ -46,18 +47,34 @@ const ManageServicesCard = ({ manageService, handleDelete, handleUpdate }) => {
         setOpenUpdatedModal(true);
     }
 
-    // const handleUpdatedServices =(e) => {
-    //     e.preventDefault();
+    const handleUpdatedServices =(e) => {
+        e.preventDefault();
+    const updatedService = {
+                serviceName: e.target.serviceName.value,
+                serviceDescription: e.target.serviceDescription.value,
+                servicePrice: e.target.servicePrice.value,
+            };
 
-    //     const updatedService = {
-    //         serviceName: e.target.serviceName.value,
-    //         serviceDescription: e.target.serviceDescription.value,
-    //         servicePrice: e.target.servicePrice.value,
-    //     };
-        
-    //     closeModal();
-    // }
-
+    fetch(`http://localhost:5000/services/${_id}`,{
+        method: 'PUT',
+        headers: {
+          'content-type' : 'application/json'
+        },
+        body: JSON.stringify(updatedService)
+      })
+      .then(res=> res.json())
+      .then(data => {
+        if(data.modifiedCount>0){
+            Swal.fire({
+                text: 'Successfully Edited',
+                icon: 'success',
+                confirmButtonText: 'Updated'
+            })
+            navigate("/services");
+            closeModal();
+        }
+      })
+    }
 
 
 
@@ -78,68 +95,69 @@ const ManageServicesCard = ({ manageService, handleDelete, handleUpdate }) => {
             <div className="flex flex-col justify-between mt-4">
 
                 <button
-                    onClick={() => handleEdit()}
-                    className="bg-teal-800 mb-2 flex justify-center items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-teal-900"> 
+                    onClick={() => handleEdit(_id)}
+                    className="bg-teal-800 mb-2 flex justify-center items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-teal-900">
                     Edit <MdEdit size={22} /></button>
 
-            {/* Modal for Updating */}
-            <Modal
-                isOpen={openUpdatedModal}
-                // onAfterOpen={afterOpenModal}
-                onRequestClose={closeModal}
-                style={customStyles}
-                contentLabel="Example Modal">
+                {/* Modal for Editing */}
+                <Modal
+                    isOpen={openUpdatedModal}
+                    // onAfterOpen={afterOpenModal}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal">
 
-               
-                    
-                        <h3 className="text-xl font-bold mb-4">Update Your Service</h3>
-                        <form
-                            // onSubmit={handleUpdatedServices}
-                            >
-                            <div className="mb-4">
-                                <label className="block font-medium mb-2">Service Name</label>
-                                <input
-                                    type="text"
-                                    name="serviceName"
-                                    defaultValue={serviceName}
-                                    className="w-full border rounded-lg px-3 py-2"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label className="block font-medium mb-2">Description</label>
-                                <textarea
-                                    name="serviceDescription"
-                                    defaultValue={serviceDescription}
-                                    className="w-full border rounded-lg px-3 py-2"
-                                    rows="3"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label className="block font-medium mb-2">Price</label>
-                                <input
-                                    type="text"
-                                    name="servicePrice"
-                                    defaultValue={servicePrice}
-                                    className="w-full border rounded-lg px-3 py-2"
-                                />
-                            </div>
-                            <div className="flex justify-end gap-2">
-                                <button
-                                    type="button"
-                                    onClick={closeModal}
-                                    className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
-                                    Cancel</button>
-                                <button
-                                    type="submit"
-                                    className="bg-teal-700 text-white px-4 py-2 rounded-lg hover:bg-teal-600">
-                                    Save Changes
-                                </button>
-                            </div>
-                        </form>
-                    
-    
-            </Modal>
-            
+
+
+                    <h3 className="text-xl font-bold mb-4">Update Your Service</h3>
+                    <form
+                    onSubmit={handleUpdatedServices}
+                    >
+                        <div className="mb-4">
+                            <label className="block font-medium mb-2">Service Name</label>
+                            <input
+                                type="text"
+                                name="serviceName"
+                                defaultValue={serviceName}
+                                className="w-full border rounded-lg px-3 py-2"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block font-medium mb-2">Description</label>
+                            <textarea
+                                name="serviceDescription"
+                                defaultValue={serviceDescription}
+                                className="w-full border rounded-lg px-3 py-2"
+                                rows="3"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block font-medium mb-2">Price</label>
+                            <input
+                                type="text"
+                                name="servicePrice"
+                                defaultValue={servicePrice}
+                                className="w-full border rounded-lg px-3 py-2"
+                            />
+                        </div>
+                        <div className="flex justify-end gap-2">
+                            <button
+                                type="button"
+                                onClick={closeModal}
+                                className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+                                Cancel</button>
+                            <input
+                                type="submit"
+                                value="Save Changes"
+                                className="bg-teal-700 text-white px-4 py-2 rounded-lg hover:bg-teal-600">
+                               
+                            </input>
+                        </div>
+                    </form>
+
+
+                </Modal>
+
                 <button
                     onClick={() => handleDelete(_id)}
                     className="bg-teal-700 text-white flex justify-center items-center gap-2 px-4 py-2 rounded-lg hover:bg-teal-800">

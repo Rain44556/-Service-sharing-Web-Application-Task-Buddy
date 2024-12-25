@@ -4,7 +4,7 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const SingleServiceDetails = () => {
     const singleServiceData = useLoaderData();
-    const { _id, serviceImage, serviceName, serviceDescription, serviceArea, serviceProvider, providerImage, providerName, servicePrice } = singleServiceData;
+    const { _id, serviceImage, serviceName, serviceDescription, serviceArea,servicePrice, serviceProvider, providerImage, providerName} = singleServiceData;
 
     return (
         <div className="bg-gradient-to-b from-[#EAF6F6] to-[#FDFCFB] min-h-screen">
@@ -19,7 +19,7 @@ const SingleServiceDetails = () => {
             className="w-32 h-32 object-cover rounded-full border-4 border-[#3C6E71]"
           />
           <div className="ml-6">
-            <h2 className="text-2xl font-semibold text-[#284B63]">{serviceProvider.providerName}</h2>
+            {/* <h2 className="text-2xl font-semibold text-[#284B63]">{serviceProvider.providerName}</h2> */}
             <p className="text-[#3C6E71] mt-1 flex gap-2"><IoLocationSharp size={25} /> 
               <span className="text-[#3C6E71]"> {serviceArea}</span>
             </p>
