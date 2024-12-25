@@ -26,7 +26,10 @@ const ManageServicesCard = ({ manageService, handleDelete, handleUpdate }) => {
           bottom: 'auto',
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
-          width: '400px'
+          width: '400px',
+          height: '500px',
+          background: '#c7dede',
+          border: 'rounded'
         },
       };
 
@@ -87,8 +90,8 @@ const ManageServicesCard = ({ manageService, handleDelete, handleUpdate }) => {
                 style={customStyles}
                 contentLabel="Example Modal">
 
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white rounded-lg p-6 w-96 shadow-lg">
+               
+                    
                         <h3 className="text-xl font-bold mb-4">Update Your Service</h3>
                         <form
                             // onSubmit={handleUpdatedServices}
@@ -133,8 +136,8 @@ const ManageServicesCard = ({ manageService, handleDelete, handleUpdate }) => {
                                 </button>
                             </div>
                         </form>
-                    </div>
-                </div>
+                    
+    
             </Modal>
             
                 <button

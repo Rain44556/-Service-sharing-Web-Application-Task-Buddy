@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ManageServicesCard from './ManageServicesCard';
-import { useLoaderData } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
@@ -10,14 +9,13 @@ const ManageServices = () => {
     
     
     useEffect(()=>{
-        fetch('http://localhost:5000/services')
+        fetch(`http://localhost:5000/userServices?email=${user.email}`)
         .then(res => res.json())
         .then(data => setManageServices(data))
     }, [])
 
 
     //Delete button functionality
-    
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
