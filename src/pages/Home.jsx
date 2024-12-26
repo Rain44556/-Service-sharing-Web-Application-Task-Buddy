@@ -1,16 +1,18 @@
 import React from 'react';
 import Banner from '../components/Banner';
 import PopularServices from '../components/popularServices';
-import LearnWithExperts from '../components/LearnWithExperts';
 import SuccessStories from '../components/SuccessStories';
+import MasterTrending from '../components/MasterTrending';
+import FAQ from '../components/FAQ';
 
 const Home = () => {
     return (
         <div>
            <Banner></Banner>
            <PopularServices></PopularServices>
-           <LearnWithExperts></LearnWithExperts>
+           <MasterTrending></MasterTrending>
            <SuccessStories></SuccessStories>
+           <FAQ></FAQ>
         </div>
     );
 };
