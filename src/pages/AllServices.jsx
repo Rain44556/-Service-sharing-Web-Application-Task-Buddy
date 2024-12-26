@@ -6,6 +6,20 @@ const AllServices = () => {
     const servicesData = useLoaderData();
     const [services, setServices] = useState(servicesData);
 
+    const searchService = (e) =>{
+        e.preventDefault();
+
+        const searchInput = e.target.value;
+        const filteredService = [];
+
+        servicesData.forEach(search => {
+            if(search.serviceName.toLowerCase().indexOf(searchInput) !== -1){
+                filteredService.push(search);
+            }
+        })
+        setServices(filteredService)
+    }
+
 
     return (
         <div className=' bg-gray-100 py-10'>
@@ -13,7 +27,7 @@ const AllServices = () => {
           All Services
         </h1>
         <div className="form-control w-3/5 mx-auto my-7">
-            <input type="text" placeholder="Search Your Services" className="input input-bordered w-24 md:w-auto" />
+            <input onChange={searchService} type="text" placeholder="Search Your Services" className="input input-bordered w-24 md:w-auto" />
         </div>
         <div className='max-w-4xl mx-auto'>
          <div className="space-y-6 font-bodyFont">

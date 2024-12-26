@@ -3,20 +3,20 @@ import AuthContext from '../context/AuthContext';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const BookService = () => {
     const {user} = useContext(AuthContext);
-    const [bookedServices, setBookedServices] = useState([]);
+    // const [bookedServices, setBookedServices] = useState([]);
     const navigate = useNavigate();
 
 
+ const bookedServices = useLoaderData();
+
+
 useEffect(()=>{
-    axios.get(`https://task-buddy-server-side.vercel.app/userServices?email=${user.email}`,{
-        withCredentials: true
-    })
-    .then(res => setBookedServices(res.data))
-}, [user.email])
+    console.log(bookedServices)
+}, [])
 
   
 const handleBookedServices = (e)=>{
@@ -33,14 +33,14 @@ const serviceDate = e.target.serviceDate.value;
 const specialInstruction = e.target.specialInstruction.value;
 const servicePrice = e.target.servicePrice.value;
 
-const bookedServices = {serviceId,serviceName,serviceImage,providerEmail,providerName,currentUserEmail,currentUserName,serviceDate,specialInstruction,servicePrice};
+const bookServices = {serviceId,serviceName,serviceImage,providerEmail,providerName,currentUserEmail,currentUserName,serviceDate,specialInstruction,servicePrice};
 
 fetch('http://localhost:5000/bookService', {
 method: "POST",
 headers: {
     'content-type': 'application/json'
 },
-body: JSON.stringify({...bookedServices, 
+body: JSON.stringify({...bookServices, 
   serviceStatus: "pending",
   })
 })
@@ -66,10 +66,10 @@ body: JSON.stringify({...bookedServices,
 
     return (
         <div>
-        {
-            bookedServices.map(bookedService =>
-            (<div 
-                key={bookedService._id}
+        
+            
+            <div 
+              
                 className="bg-white rounded-lg p-6 justify-center items-center">
                   <h2 className="text-2xl font-bold mb-4 font-headingFont text-center">Book Your Choice!</h2>
                   <form onSubmit={handleBookedServices}>
@@ -78,7 +78,7 @@ body: JSON.stringify({...bookedServices,
                       <input
                         type="text"
                         name='serviceId'
-                        value={bookedService._id}
+                        value={bookedServices._id}
                         className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
                         readOnly
                       />
@@ -88,7 +88,7 @@ body: JSON.stringify({...bookedServices,
                       <input
                         type="text"
                         name="serviceName"
-                        value={bookedService.serviceName}
+                        value={bookedServices.serviceName}
                         className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
                         readOnly
                       />
@@ -98,7 +98,7 @@ body: JSON.stringify({...bookedServices,
                       <input
                         type="text"
                         name="serviceImage"
-                        value={bookedService.serviceImage}
+                        value={bookedServices.serviceImage}
                         className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
                         readOnly
                       />
@@ -108,7 +108,7 @@ body: JSON.stringify({...bookedServices,
                       <input
                         type="text"
                         name="providerEmail"
-                        value={bookedService.serviceProvider.providerEmail}
+                        value={bookedServices.serviceProvider.providerEmail}
                         className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
                         readOnly
                       />
@@ -118,7 +118,7 @@ body: JSON.stringify({...bookedServices,
                       <input
                         type="text"
                         name="providerName"
-                        value={bookedService.serviceProvider.providerName}
+                        value={bookedServices.serviceProvider.providerName}
                         className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
                         readOnly
                       />
@@ -164,7 +164,7 @@ body: JSON.stringify({...bookedServices,
                       <input
                         type="text"
                         name='servicePrice'
-                        value={bookedService.servicePrice}
+                        value={bookedServices.servicePrice}
                         className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
                         readOnly
                       />
@@ -172,9 +172,7 @@ body: JSON.stringify({...bookedServices,
                    <input type="submit" value="Purchase" className="btn btn-block bg-[#004d4f] hover:border-3 hover:border-[#004d4f] hover:bg-white hover:text-[#004d4f] text-white" />
                   </form>
                 </div>
-              )
-            )
-        }
+              
        </div>
     );
 };

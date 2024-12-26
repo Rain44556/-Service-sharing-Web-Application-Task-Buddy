@@ -1,9 +1,9 @@
 import React from 'react';
 import Banner from '../components/Banner';
 import PopularServices from '../components/popularServices';
-import SuccessStories from '../components/SuccessStories';
 import MasterTrending from '../components/MasterTrending';
 import FAQ from '../components/FAQ';
+import PersonalizedLearning from '../components/PersonalizedLearning';
 
 const Home = () => {
     return (
@@ -11,7 +11,7 @@ const Home = () => {
            <Banner></Banner>
            <PopularServices></PopularServices>
            <MasterTrending></MasterTrending>
-           <SuccessStories></SuccessStories>
+           <PersonalizedLearning></PersonalizedLearning>
            <FAQ></FAQ>
         </div>
     );

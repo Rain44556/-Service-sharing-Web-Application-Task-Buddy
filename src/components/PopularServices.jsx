@@ -6,7 +6,7 @@ const PopularServices = () => {
     const [popularServices, setPopularService] = useState([]);
 
     useEffect(()=>{
-        fetch('https://task-buddy-server-side.vercel.app/services/popular')
+        fetch('http://localhost:5000/services/popular')
         .then(res => res.json())
         .then(data => {
             setPopularService(data);
