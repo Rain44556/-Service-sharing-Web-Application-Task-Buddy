@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const { user, userSignOut } = useContext(AuthContext);
-    const {theme} = useContext(is)
     const menuLinks = <>
         <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/">Home</NavLink>
         <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/services">Services</NavLink>
@@ -31,13 +30,6 @@ const handleSignOutUser = () =>{
     })
 }
 
-
-//Togle
-
-const handleToggleChange = (event) => {
-    setIsChecked(event.target.checked); // Update the state with the checkbox's value
-    console.log("Checkbox is now:", event.target.checked ? "Checked" : "Unchecked");
-  };
 
     return (
         <div className="navbar font-headingFont mx-auto sticky top-0 z-50 backdrop-blur-md shadow-md ">
