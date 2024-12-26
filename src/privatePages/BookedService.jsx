@@ -12,12 +12,12 @@ const BookedService = () => {
  
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/bookService?email=${user.email}`,{
+        axios.get(`http://localhost:5000/bookedService?email=${user.email}`,{
             withCredentials: true
         })
         .then(res => setBooked(res.data))
     }, [user.email])
-    
+
 
     return (
             <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-10 font-bodyFont">

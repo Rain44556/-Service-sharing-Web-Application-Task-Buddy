@@ -30,7 +30,8 @@ const ManageServices = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:5000/services/${id}`, {
-                    method: 'DELETE'
+                    method: 'DELETE',
+                    credentials: 'include',
                 })
                     .then(res => res.json())
                     .then(data => {

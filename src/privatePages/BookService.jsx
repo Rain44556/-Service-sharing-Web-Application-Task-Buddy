@@ -37,6 +37,7 @@ const bookServices = {serviceId,serviceName,serviceImage,providerEmail,providerN
 
 fetch('http://localhost:5000/bookService', {
 method: "POST",
+credentials: 'include',
 headers: {
     'content-type': 'application/json'
 },
@@ -79,7 +80,7 @@ body: JSON.stringify({...bookServices,
                         type="text"
                         name='serviceId'
                         value={bookedServices._id}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                        className="w-full border-teal-800 border rounded-md bg-gray-200 cursor-not-allowed p-2"
                         readOnly
                       />
                     </div>
@@ -89,7 +90,7 @@ body: JSON.stringify({...bookServices,
                         type="text"
                         name="serviceName"
                         value={bookedServices.serviceName}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                        className="w-full border-teal-800 border rounded-md bg-gray-200 cursor-not-allowed p-2"
                         readOnly
                       />
                     </div>
@@ -99,7 +100,7 @@ body: JSON.stringify({...bookServices,
                         type="text"
                         name="serviceImage"
                         value={bookedServices.serviceImage}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                        className="w-full border-teal-800 border rounded-md bg-gray-200 cursor-not-allowed p-2"
                         readOnly
                       />
                     </div>
@@ -109,7 +110,7 @@ body: JSON.stringify({...bookServices,
                         type="text"
                         name="providerEmail"
                         value={bookedServices.serviceProvider.providerEmail}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                        className="w-full border-teal-800 border rounded-md bg-gray-200 cursor-not-allowed p-2"
                         readOnly
                       />
                     </div>
@@ -119,7 +120,7 @@ body: JSON.stringify({...bookServices,
                         type="text"
                         name="providerName"
                         value={bookedServices.serviceProvider.providerName}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                        className="w-full border-teal-800 border rounded-md bg-gray-200 cursor-not-allowed p-2"
                         readOnly
                       />
                     </div>
@@ -129,7 +130,7 @@ body: JSON.stringify({...bookServices,
                         type="text"
                         name="currentUserEmail"
                         value={user.email}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                        className="w-full border-teal-800 border rounded-md bg-gray-200 cursor-not-allowed p-2"
                         readOnly
                       />
                     </div>
@@ -139,7 +140,7 @@ body: JSON.stringify({...bookServices,
                         type="text"
                         name="currentUserName"
                         value={user.displayName}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                        className="w-full border-teal-800 border rounded-md bg-gray-200 cursor-not-allowed p-2"
                         readOnly
                       />
                     </div>
@@ -148,14 +149,14 @@ body: JSON.stringify({...bookServices,
                       <input
                         type="date"
                         name="serviceDate"
-                        className="w-full border-gray-300 rounded-md"
+                        className="w-full border-teal-800 border rounded-md"
                       />
                     </div>
                     <div className="mb-4">
                       <label className="block text-gray-700 font-semibold">Special Instruction</label>
                       <textarea
                         name="specialInstruction"
-                        className="w-full border-gray-300 rounded-md"
+                        className="w-full border-teal-600 rounded-md border h-24"
                         placeholder="Enter any special instructions..."
                       ></textarea>
                     </div>
@@ -165,7 +166,7 @@ body: JSON.stringify({...bookServices,
                         type="text"
                         name='servicePrice'
                         value={bookedServices.servicePrice}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
+                        className="w-full rounded-md bg-gray-200 cursor-not-allowed p-2 border-teal-800 border"
                         readOnly
                       />
                     </div>

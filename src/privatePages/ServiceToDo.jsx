@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 const ServiceToDo = () => {
     const { user } = useContext(AuthContext);
     const [booked, setBooked] = useState([]);
-    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -28,6 +27,7 @@ const ServiceToDo = () => {
 
         fetch(`http://localhost:5000/bookService/${id}`,{
             method: 'PUT',
+            credentials: 'include',
             headers: {
               'content-type' : 'application/json'
             },
@@ -40,7 +40,7 @@ const ServiceToDo = () => {
                         text: 'Successfully Edited',
                         icon: 'success',
                         confirmButtonText: 'Updated'
-                    }).then(()=>     axios.get(`http://localhost:5000/myService?email=${user.email}`, {
+                    }).then(()=>axios.get(`http://localhost:5000/myService?email=${user.email}`, {
                         withCredentials: true
                     })
                         .then(res => setBooked(res.data))
@@ -81,27 +81,28 @@ const ServiceToDo = () => {
                                 </h2>
                                 <p className="text-gray-600"><span className='font-semibold'>Description : </span> {service.specialInstruction}</p>
                                 <p className="text-gray-600"><span className='font-semibold'>Purchase Date : </span> {service.serviceDate}</p>
-                                <span className="text-gray-700 text-sm">
-                                    <span className='font-semibold'>Provider Name : </span> {service.providerName}
-                                </span>
-                                <div className=' mt-2'>
-
+                                
+                                <div className="text-gray-700 text-sm">
+                                    <span className='font-semibold'>User Name : </span> {service.currentUserName}
+                                </div>
+                                <div className="text-gray-700 text-sm">
+                                    <span className='font-semibold'>User Email : </span> {service.currentUserEmail}
+                                </div>
+                                <div>
+                                <p className="text-teal-600 text-sm">
+                                        <span className="font-semibold">Price : </span> ${service.servicePrice}
+                                    </p>
                                     <span>
                                         <select
                                             onChange={(e)=> handleStatusChange(e,service._id)}
                                             value={service.serviceStatus}
-                                            className="select select-bordered w-full max-w-xs">
+                                            className="select mt-2 select-bordered w-full max-w-xs border-teal-900">
 
                                             <option value="Working">Working</option>
                                             <option value="Completed">Completed</option>
                                             <option value="Pending">Pending</option>
                                         </select>
                                     </span>
-
-
-                                    <p className="text-teal-600 text-sm border-2 rounded-full p-1 px-1 py-2 bg-gray-200">
-                                        Price: ${service.servicePrice}
-                                    </p>
                                 </div>
 
                             </div>

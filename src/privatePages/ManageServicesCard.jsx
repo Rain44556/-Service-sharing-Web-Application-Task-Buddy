@@ -58,6 +58,7 @@ const ManageServicesCard = ({ manageService, handleDelete }) => {
 
     fetch(`http://localhost:5000/services/${_id}`,{
         method: 'PUT',
+        credentials: 'include',
         headers: {
           'content-type' : 'application/json'
         },

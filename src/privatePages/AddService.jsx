@@ -21,6 +21,7 @@ const addedServices = {serviceImage,serviceName,servicePrice,serviceArea,service
 
 fetch('http://localhost:5000/services', {
     method: "POST",
+    credentials: 'include',
     headers: {
         'content-type': 'application/json'
     },

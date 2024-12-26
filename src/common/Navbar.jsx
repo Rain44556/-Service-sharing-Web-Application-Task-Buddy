@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const { user, userSignOut } = useContext(AuthContext);
+    const {theme} = useContext(is)
     const menuLinks = <>
         <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/">Home</NavLink>
         <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/services">Services</NavLink>
@@ -29,6 +30,14 @@ const handleSignOutUser = () =>{
         toast.error(err,'Failed to Sign Out');
     })
 }
+
+
+//Togle
+
+const handleToggleChange = (event) => {
+    setIsChecked(event.target.checked); // Update the state with the checkbox's value
+    console.log("Checkbox is now:", event.target.checked ? "Checked" : "Unchecked");
+  };
 
     return (
         <div className="navbar font-headingFont mx-auto sticky top-0 z-50 backdrop-blur-md shadow-md ">
@@ -62,6 +71,10 @@ const handleSignOutUser = () =>{
             </div>
 
             <div className="navbar-end">
+
+
+                 {/* Toggle for Theme Customization */}
+            <input type="checkbox" className="toggle toggle-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] mr-4" defaultChecked />
 
                 {/* dropdown menu for small  device */}
                 <div className="dropdown mr-3 bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)]">
