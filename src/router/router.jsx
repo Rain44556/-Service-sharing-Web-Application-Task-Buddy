@@ -35,12 +35,12 @@ const router = createBrowserRouter([
       {
         path: '/services',
         element: <AllServices></AllServices>,
-        loader: ()=> fetch('http://localhost:5000/allServices')
+        loader: ()=> fetch('https://task-buddy-server-side.vercel.app/allServices')
       },
       {
         path: '/singleServiceDetails/:id',
         element: <PrivateRoute><SingleServiceDetails></SingleServiceDetails></PrivateRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/services/${params.id}`)
+        loader: ({params})=> fetch(`https://task-buddy-server-side.vercel.app/services/${params.id}`)
       },
       {
         path: '/AddService',

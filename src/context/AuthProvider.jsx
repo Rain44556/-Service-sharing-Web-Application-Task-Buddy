@@ -6,32 +6,32 @@ import axios from 'axios';
 
 
 const googleProvider = new GoogleAuthProvider();
-const AuthProvider = ({children}) => {
-    const [user,setUser] = useState(null);
-    const [loading,setLoading] = useState(true);
+const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    const UserSignup = (email,password)=>{
+    const UserSignup = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth,email,password)
+        return createUserWithEmailAndPassword(auth, email, password)
     };
 
-    const userSignIn = (email, password)=>{
+    const userSignIn = (email, password) => {
         setLoading(true)
-        return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const userSignOut = ()=>{
+    const userSignOut = () => {
         setLoading(true);
         return signOut(auth);
     }
 
-    const googleUser = ()=>{
-        return signInWithPopup(auth,googleProvider);
+    const googleUser = () => {
+        return signInWithPopup(auth, googleProvider);
     }
 
-    const updateProfileUser = (updatedData) =>{
+    const updateProfileUser = (updatedData) => {
         return updateProfile(auth.currentUser, updatedData);
-        }
+    }
 
 
 
@@ -48,18 +48,31 @@ const AuthProvider = ({children}) => {
     }
 
     //set observer on the Auth object to get the current user
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            if(currentUser?.email){
-                const user = {email: currentUser.email};
+            if (currentUser?.email) {
+                const user = { email: currentUser.email };
 
-                axios.post('http://localhost:5000/jwt', user, {withCredentials:true})
-                .then(res =>console.log(res.data))
+                axios.post('https://task-buddy-server-side.vercel.app/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                        setLoading(false);
+                    })
             }
-            setLoading(false);
+            else {
+                axios.post('https://task-buddy-server-side.vercel.app/signout', {},
+                    {
+                        withCredentials: true
+                    })
+                    .then(res => {
+                        console.log('signout', res.data)
+                        setLoading(false);
+                    })
+            }
+
         });
-        return ()=>{
+        return () => {
             unsubscribe();
         };
     }, []);

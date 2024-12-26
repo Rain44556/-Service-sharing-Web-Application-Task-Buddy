@@ -6,7 +6,7 @@ import loadingAnimation from '../assets/animaiton/loading.json'
 const Loading = () => {
     return (
         <div className='flex min-h-screen justify-center items-center'>
-       <Lottie animationData={loadingAnimation}></Lottie>
+       <Lottie className='w-52' animationData={loadingAnimation}></Lottie>
     </div>
     );
 };

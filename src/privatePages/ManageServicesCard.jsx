@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const ManageServicesCard = ({ manageService, handleDelete, handleUpdate }) => {
+const ManageServicesCard = ({ manageService, handleDelete }) => {
 
     const { _id,
         serviceImage,
@@ -47,6 +47,7 @@ const ManageServicesCard = ({ manageService, handleDelete, handleUpdate }) => {
         setOpenUpdatedModal(true);
     }
 
+    
     const handleUpdatedServices =(e) => {
         e.preventDefault();
     const updatedService = {
@@ -55,7 +56,7 @@ const ManageServicesCard = ({ manageService, handleDelete, handleUpdate }) => {
                 servicePrice: e.target.servicePrice.value,
             };
 
-    fetch(`http://localhost:5000/services/${_id}`,{
+    fetch(`https://task-buddy-server-side.vercel.app/services/${_id}`,{
         method: 'PUT',
         headers: {
           'content-type' : 'application/json'

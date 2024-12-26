@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ManageServicesCard from './ManageServicesCard';
 import AuthContext from '../context/AuthContext';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const ManageServices = () => {
     const {user} = useContext(AuthContext);
@@ -9,10 +10,11 @@ const ManageServices = () => {
     
     
     useEffect(()=>{
-        fetch(`http://localhost:5000/userServices?email=${user.email}`)
-        .then(res => res.json())
-        .then(data => setManageServices(data))
-    }, [])
+        axios.get(`https://task-buddy-server-side.vercel.app/userServices?email=${user.email}`,{
+            withCredentials: true
+        })
+        .then(res => setManageServices(res.data))
+    }, [user.email])
 
 
     //Delete button functionality
@@ -27,7 +29,7 @@ const ManageServices = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/services/${id}`, {
+                fetch(`https://task-buddy-server-side.vercel.app/services/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
