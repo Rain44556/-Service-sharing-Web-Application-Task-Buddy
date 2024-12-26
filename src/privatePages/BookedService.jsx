@@ -1,183 +1,81 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
-import Swal from 'sweetalert2';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-const BookedService = () => {
+import Lottie from 'lottie-react';
+import nodataAnimation from '../assets/animaiton/nodata.json'
 
+const BookedService = () => {
     const {user} = useContext(AuthContext);
-        const [bookedServices, setBookedServices] = useState([]);
-        const navigate = useNavigate();
-    
+    const bookServicesData = useLoaderData();
+    const [booked, setBooked] = useState([]);
+
+    const {
+        serviceName,
+        serviceImage,
+        serviceProvider,
+        providerEmail,
+        providerName,
+        currentUserEmail,
+        currentUserName,
+        serviceDate,
+        specialInstruction,
+        servicePrice} = bookServicesData;
 
     useEffect(()=>{
-        axios.get(`https://task-buddy-server-side.vercel.app/userServices?email=${user.email}`,{
+        axios.get(`http://localhost:5000/bookService?email=${user.email}`,{
             withCredentials: true
         })
-        .then(res => setBookedServices(res.data))
+        .then(res => setBooked(res.data))
     }, [user.email])
 
-      
-    const handleBookedServices = (e)=>{
-    e.preventDefault();
-    
-    const serviceId = e.target.serviceId.value;
-    const serviceName = e.target.serviceName.value;
-    const serviceImage = e.target.serviceImage.value;
-    const providerEmail = e.target.providerEmail.value;
-    const providerName = e.target.providerName.value;
-    const currentUserEmail = e.target.currentUserEmail.value;
-    const currentUserName = e.target.currentUserName.value;
-    const serviceDate = e.target.serviceDate.value;
-    const specialInstruction = e.target.specialInstruction.value;
-    const servicePrice = e.target.servicePrice.value;
-
-    const bookedServices = {serviceId,serviceName,serviceImage,providerEmail,providerName,currentUserEmail,currentUserName,serviceDate,specialInstruction,price: servicePrice};
-
-fetch('http://localhost:5000/bookedService', {
-    method: "POST",
-    headers: {
-        'content-type': 'application/json'
-    },
-    body: JSON.stringify({...bookedServices, 
-      serviceStatus: "pending",
-      })
-})
-    .then(res => {
-        return res.json()})
-    .then(data => {
-        if (data.insertedId) {
-            Swal.fire({
-                title: 'Success!',
-                text: 'Successfully Added',
-                icon: 'success',
-                confirmButtonText: 'Added'
-            })
-            navigate("/services");
-        }
-    })
-    .catch(err=>{
-       toast.error("Failed To Add")
-    })
-
-}
-
-
     return (
-       <div>
-        {
-            bookedServices.map(bookedService =>
-            (<div 
-                key={bookedService._id}
-                className="bg-white rounded-lg p-6 justify-center items-center">
-                  <h2 className="text-2xl font-bold mb-4 font-headingFont text-center">Book Your Choice!</h2>
-                  <form onSubmit={handleBookedServices}>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 font-semibold">Service ID</label>
-                      <input
-                        type="text"
-                        name='serviceId'
-                        value={bookedService._id}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
-                        readOnly
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 font-semibold">Service Name</label>
-                      <input
-                        type="text"
-                        name="serviceName"
-                        value={bookedService.serviceName}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
-                        readOnly
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 font-semibold">Service Image</label>
-                      <input
-                        type="text"
-                        name="serviceImage"
-                        value={bookedService.serviceImage}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
-                        readOnly
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 font-semibold">Provider Email</label>
-                      <input
-                        type="text"
-                        name="providerEmail"
-                        value={bookedService.serviceProvider.providerEmail}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
-                        readOnly
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 font-semibold">provider Name</label>
-                      <input
-                        type="text"
-                        name="providerName"
-                        value={bookedService.serviceProvider.providerName}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
-                        readOnly
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 font-semibold">Current User Email</label>
-                      <input
-                        type="text"
-                        name="currentUserEmail"
-                        value={user.email}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
-                        readOnly
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 font-semibold">current  User Name</label>
-                      <input
-                        type="text"
-                        name="currentUserName"
-                        value={user.displayName}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
-                        readOnly
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 font-semibold">Service Taking Date</label>
-                      <input
-                        type="date"
-                        name="serviceDate"
-                        // value={serviceDate}
-                        className="w-full border-gray-300 rounded-md"
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 font-semibold">Special Instruction</label>
-                      <textarea
-                        name="specialInstruction"
-                        className="w-full border-gray-300 rounded-md"
-                        placeholder="Enter any special instructions..."
-                      ></textarea>
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 font-semibold">Price</label>
-                      <input
-                        type="text"
-                        name='servicePrice'
-                        value={bookedService.servicePrice}
-                        className="w-full border-gray-300 rounded-md bg-gray-200 cursor-not-allowed"
-                        readOnly
-                      />
-                    </div>
-                   <input type="submit" value="Purchase" className="btn btn-block bg-[#004d4f] hover:border-3 hover:border-[#004d4f] hover:bg-white hover:text-[#004d4f] text-white" />
-                  </form>
-                  {/* <button className="mt-4 text-gray-500 hover:text-gray-700">Cancel</button> */}
+            <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-10 font-bodyFont">
+              <h1 className="text-3xl font-bold text-teal-600 text-center mb-8 font-headingFont">
+                My Booked Services
+              </h1>
+              {booked.length === 0 ? (
+                <div className="flex flex-col items-center justify-center mt-10">
+                  <Lottie animationData={nodataAnimation}></Lottie>
+                  <h2 className="text-4xl font-medium text-teal-600">
+                    You Have Not Booked Any Services Yet!
+                  </h2>
                 </div>
-              )
-            )
-        }
-       </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {booked.map((service) => (
+                    <div
+                      key={service._id}
+                      className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition duration-300"
+                    >
+                      <img
+                        src={serviceImage}
+                        alt={serviceName}
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="p-6">
+                        <h2 className="text-xl font-bold text-gray-800 mb-2">
+                          {serviceName}
+                        </h2>
+                        <p className="text-gray-600 mb-4">Description: {specialInstruction}</p>
+                        <p className="text-gray-600 mb-4">Purchase Date: {serviceDate}</p>
+                          <span className="text-gray-700 text-sm">
+                            {providerName}
+                          </span>
+                       
+
+                        <p className="text-teal-600 font-semibold text-lg">
+                          Price: ${servicePrice}
+                        </p>
+                        <button className="w-full mt-4 py-2 bg-teal-600 text-white rounded-md font-medium hover:bg-teal-700 transition duration-300">
+                          View Details
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
     );
 };
 
