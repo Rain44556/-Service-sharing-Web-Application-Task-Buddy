@@ -59,7 +59,6 @@ const router = createBrowserRouter([
       {
         path: '/bookedService',
         element: <PrivateRoute><BookedService></BookedService></PrivateRoute>,
-        loader: ()=> fetch('http://localhost:5000/bookService')
       },
       {
         path: '/ServiceToDo',

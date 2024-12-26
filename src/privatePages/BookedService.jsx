@@ -7,20 +7,9 @@ import nodataAnimation from '../assets/animaiton/nodata.json'
 
 const BookedService = () => {
     const {user} = useContext(AuthContext);
-    const bookServicesData = useLoaderData();
     const [booked, setBooked] = useState([]);
 
-    const {
-        serviceName,
-        serviceImage,
-        serviceProvider,
-        providerEmail,
-        providerName,
-        currentUserEmail,
-        currentUserName,
-        serviceDate,
-        specialInstruction,
-        servicePrice} = bookServicesData;
+ 
 
     useEffect(()=>{
         axios.get(`http://localhost:5000/bookService?email=${user.email}`,{
@@ -28,6 +17,7 @@ const BookedService = () => {
         })
         .then(res => setBooked(res.data))
     }, [user.email])
+    
 
     return (
             <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-10 font-bodyFont">
@@ -49,27 +39,30 @@ const BookedService = () => {
                       className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition duration-300"
                     >
                       <img
-                        src={serviceImage}
-                        alt={serviceName}
+                        src={service.serviceImage}
+                        alt={service.serviceName}
                         className="w-full h-48 object-cover"
                       />
                       <div className="p-6">
                         <h2 className="text-xl font-bold text-gray-800 mb-2">
-                          {serviceName}
+                          {service.serviceName}
                         </h2>
-                        <p className="text-gray-600 mb-4">Description: {specialInstruction}</p>
-                        <p className="text-gray-600 mb-4">Purchase Date: {serviceDate}</p>
+                        <p className="text-gray-600"><span className='font-semibold'>Description : </span> {service.specialInstruction}</p>
+                        <p className="text-gray-600"><span className='font-semibold'>Purchase Date : </span> {service.serviceDate}</p>
                           <span className="text-gray-700 text-sm">
-                            {providerName}
+                          <span className='font-semibold'>Provider Name : </span> {service.providerName}
+                          </span>
+                       <div className='flex gap-5 mt-2'>
+                       <span className="text-gray-700 text-sm border-2 rounded-full px-1 py-2 bg-gray-200">
+                          Status: {service.serviceStatus}
                           </span>
                        
 
-                        <p className="text-teal-600 font-semibold text-lg">
-                          Price: ${servicePrice}
+                        <p className="text-teal-600 text-sm border-2 rounded-full p-1 px-1 py-2 bg-gray-200">
+                          Price: ${service.servicePrice}
                         </p>
-                        <button className="w-full mt-4 py-2 bg-teal-600 text-white rounded-md font-medium hover:bg-teal-700 transition duration-300">
-                          View Details
-                        </button>
+                       </div>
+                        
                       </div>
                     </div>
                   ))}
