@@ -1,4 +1,5 @@
 # Name of website: 
+* Task-Buddy
 
 # live site: 
 * server-side: https://task-buddy-server-side.vercel.app/
@@ -12,6 +13,3 @@
 3. User Can Book Service
 4. User Can purchase
 5. User Can Also Update and Delete Service
-
- # selected category: 
-    Category_02

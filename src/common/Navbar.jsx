@@ -30,6 +30,13 @@ const handleSignOutUser = () =>{
     })
 }
 
+// //Togle
+
+// const handleToggleChange = (event) => {
+//     setIsChecked(event.target.checked); // Update the state with the checkbox's value
+//     console.log("Checkbox is now:", event.target.checked ? "Checked" : "Unchecked");
+//   };
+
 
     return (
         <div className="navbar font-headingFont mx-auto sticky top-0 z-50 backdrop-blur-md shadow-md ">

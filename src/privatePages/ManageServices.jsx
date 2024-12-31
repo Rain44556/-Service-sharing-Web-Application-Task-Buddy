@@ -10,7 +10,7 @@ const ManageServices = () => {
     
     
     useEffect(()=>{
-        axios.get(`http://localhost:5000/userServices?email=${user.email}`,{
+        axios.get(`https://task-buddy-server-side.vercel.app/userServices?email=${user.email}`,{
             withCredentials: true
         })
         .then(res => setManageServices(res.data))
@@ -29,7 +29,7 @@ const ManageServices = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/services/${id}`, {
+                fetch(`https://task-buddy-server-side.vercel.app/services/${id}`, {
                     method: 'DELETE',
                     credentials: 'include',
                 })
