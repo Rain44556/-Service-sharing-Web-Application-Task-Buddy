@@ -19,7 +19,7 @@ const handleAddService = (e)=>{
 
 const addedServices = {serviceImage,serviceName,servicePrice,serviceArea,serviceDescription};
 
-fetch('https://task-buddy-server-side.vercel.app/services', {
+fetch('http://localhost:5000/services', {
     method: "POST",
     credentials: 'include',
     headers: {

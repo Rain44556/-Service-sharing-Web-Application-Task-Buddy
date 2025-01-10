@@ -13,7 +13,7 @@ const ServiceToDo = () => {
 
 
     useEffect(() => {
-        axios.get(`https://task-buddy-server-side.vercel.app/myService?email=${user.email}`, {
+        axios.get(`http://localhost:5000/myService?email=${user.email}`, {
             withCredentials: true
         })
             .then(res => setBooked(res.data))
@@ -25,7 +25,7 @@ const ServiceToDo = () => {
 
         const serviceStatus = e.target.value;
 
-        fetch(`https://task-buddy-server-side.vercel.app/bookService/${id}`,{
+        fetch(`http://localhost:5000/bookService/${id}`,{
             method: 'PUT',
             credentials: 'include',
             headers: {
@@ -40,7 +40,7 @@ const ServiceToDo = () => {
                         text: 'Successfully Edited',
                         icon: 'success',
                         confirmButtonText: 'Updated'
-                    }).then(()=>axios.get(`https://task-buddy-server-side.vercel.app/myService?email=${user.email}`, {
+                    }).then(()=>axios.get(`http://localhost:5000/myService?email=${user.email}`, {
                         withCredentials: true
                     })
                         .then(res => setBooked(res.data))

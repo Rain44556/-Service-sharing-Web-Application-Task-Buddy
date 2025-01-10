@@ -56,7 +56,7 @@ const ManageServicesCard = ({ manageService, handleDelete }) => {
                 servicePrice: e.target.servicePrice.value,
             };
 
-    fetch(`https://task-buddy-server-side.vercel.app/services/${_id}`,{
+    fetch(`http://localhost:5000/services/${_id}`,{
         method: 'PUT',
         credentials: 'include',
         headers: {

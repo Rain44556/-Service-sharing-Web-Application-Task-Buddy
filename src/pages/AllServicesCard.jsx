@@ -10,14 +10,14 @@ const AllServicesCard = ({service}) => {
             <img
                 src={serviceImage}
                 alt={serviceName}
-                className="w-full md:w-1/3 rounded-lg mb-4 md:mb-0 md:mr-6 object-cover"
+                className="w-full h-[290px] md:w-[440px] rounded-lg mb-4 md:mb-0 md:mr-6 object-cover"
               />
 
               <div className="flex-1">
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">
                   {serviceName}
                 </h2>
-                <p className="text-gray-600 mb-4">{serviceDescription}</p>
+                <p className="text-gray-600 mb-4">{serviceDescription.slice(0,100) + "...."}</p>
 
                 <div className="flex items-center mb-4">
                   <img
@@ -37,7 +37,7 @@ const AllServicesCard = ({service}) => {
 
                 <div className="flex items-center justify-between">
                   <p className="text-xl font-bold text-teal-700">
-                    $ {servicePrice}
+                    {servicePrice} BDT
                   </p>
                 </div>
                <Link to={`/singleServiceDetails/${_id}`}> <button className="btn px-4 py-2 w-full hover:border-2 hover:border-[#004d4f] hover:text-teal-900 font-bodyFont font-bold mt-4 rounded-lg text-white bg-[#166366] hover:bg-[#618a8c]">

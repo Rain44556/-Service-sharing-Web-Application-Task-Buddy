@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import { Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -30,16 +30,22 @@ const handleSignOutUser = () =>{
     })
 }
 
-// //Togle
+// Theme Implement
+const [themeDark, setThemeDark] = useState(false);
 
-// const handleToggleChange = (event) => {
-//     setIsChecked(event.target.checked); // Update the state with the checkbox's value
-//     console.log("Checkbox is now:", event.target.checked ? "Checked" : "Unchecked");
-//   };
+useEffect(()=>{
+    if(themeDark){
+        document.documentElement.classList.add('dark');
+    }else{
+        document.documentElement.classList.remove('dark');
+    }
+}, [themeDark]);
+
+
 
 
     return (
-        <div className="navbar font-headingFont mx-auto sticky top-0 z-50 backdrop-blur-md shadow-md ">
+        <div className="navbar font-headingFont mx-auto sticky top-0 z-50 backdrop-blur-md shadow-md lg:px-24">
             <div className="navbar-start">
                 <Link to="/">
                     <img
@@ -49,8 +55,8 @@ const handleSignOutUser = () =>{
                 </Link>
             </div>
 
-            <div className="navbar-center hidden lg:flex p-2 rounded-full font-semibold text-gray-400 ">
-                <ul className="menu menu-horizontal px-1">
+            <div className="navbar-center dark:dark:text-yellow-200 hidden lg:flex p-2 rounded-full font-semibold text-teal-700 ">
+                <ul className="menu menu-horizontal px-1 ">
                     {menuLinks}
 
                     {/* Dashboard */}
@@ -59,7 +65,7 @@ const handleSignOutUser = () =>{
                     (
                         <div className="dropdown dropdown-hover ">
                         <div tabIndex={0} role='button' className='px-6 py-2 hover:text-white hover:bg-slate-800'>Dashboard</div>
-                        <ul tabIndex={0} className="dropdown-content menu bg-[rgb(14,87,100)] rounded-box z-[1] w-52 p-2 shadow">
+                        <ul tabIndex={0} className="dropdown-content menu bg-[rgb(11,52,59)] rounded-box z-[1] w-52 p-2 shadow">
                             {dashBoardRoutes}
                         </ul>
                     </div>
@@ -73,7 +79,11 @@ const handleSignOutUser = () =>{
 
 
                  {/* Toggle for Theme Customization */}
-            <input type="checkbox" className="toggle toggle-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] mr-4" defaultChecked />
+            <input 
+            onClick={()=> setThemeDark(!themeDark)}
+            type="checkbox" 
+            className="toggle toggle-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] mr-4" 
+            defaultChecked />
 
                 {/* dropdown menu for small  device */}
                 <div className="dropdown mr-3 bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)]">

@@ -35,7 +35,7 @@ const servicePrice = e.target.servicePrice.value;
 
 const bookServices = {serviceId,serviceName,serviceImage,providerEmail,providerName,currentUserEmail,currentUserName,serviceDate,specialInstruction,servicePrice};
 
-fetch('https://task-buddy-server-side.vercel.app/bookService', {
+fetch('http://localhost:5000/bookService', {
 method: "POST",
 credentials: 'include',
 headers: {

@@ -25,9 +25,9 @@ const MainLayout = () => {
       document.title = currentPageTitle;
     }, [location]);
     return (
-        <div>
+        <div className='dark:bg-gray-900 dark:text-white'>
+          <Navbar></Navbar>
             <div className='max-w-7xl mx-auto'>
-            <Navbar></Navbar>
             <Outlet></Outlet>
         </div>
         <Footer></Footer>

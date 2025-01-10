@@ -12,7 +12,7 @@ const BookedService = () => {
  
 
     useEffect(()=>{
-        axios.get(`https://task-buddy-server-side.vercel.app/bookedService?email=${user.email}`,{
+        axios.get(`http://localhost:5000/bookedService?email=${user.email}`,{
             withCredentials: true
         })
         .then(res => setBooked(res.data))
