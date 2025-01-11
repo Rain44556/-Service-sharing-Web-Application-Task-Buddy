@@ -31,7 +31,7 @@ const handleSignOutUser = () =>{
 }
 
 // Theme Implement
-const [themeDark, setThemeDark] = useState(false);
+const [themeDark, setThemeDark] = useState(true);
 
 useEffect(()=>{
     if(themeDark){

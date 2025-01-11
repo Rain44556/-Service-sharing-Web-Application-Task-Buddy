@@ -10,12 +10,12 @@ const PersonalizedLearning = () => {
           ]
 
   return (
-    <div className="bg-gray-100 py-16 mt-10 font-bodyFont">
+    <div className="dark:bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] py-16 mt-10 font-bodyFont">
     <div className="container mx-auto text-center">
-      <h2 className="text-4xl font-bold text-teal-600 mb-8">
-        Your Personalized Learning Journey
+      <h2 className="text-4xl font-bold text-teal-600 mb-8 font-headingFont">
+        <span className="dark:text-yellow-300">Your Personalized </span>Learning Journey
       </h2>
-      <p className="mb-12 text-gray-600">
+      <p className="mb-12 text-gray-600 dark:text-yellow-100">
         Choose a learning path tailored to your goals and interests!</p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
@@ -30,7 +30,7 @@ const PersonalizedLearning = () => {
             className="bg-white text-black p-6 shadow-lg rounded-full border border-teal-700">
             <h3 className="text-xl font-bold font-headingFont">{journey.title}</h3>
             <p className="text-sm text-gray-600 mt-2">{journey.description}</p>
-            <Link to="/services"><button className="mt-4 px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition duration-300">
+            <Link to="/AddService"><button className="mt-4 px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition duration-300">
               Explore Path</button></Link>
           </motion.div>
 

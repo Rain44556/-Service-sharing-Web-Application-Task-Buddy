@@ -32,32 +32,32 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="bg-gray-100 py-12 font-bodyFont">
+    <div className="bg-gray-100 py-12 font-bodyFont dark:bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)]">
       <div className="max-w-4xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center text-teal-800 mb-6 font-headingFont"
+          className="text-4xl font-bold text-center text-teal-800 mb-6 font-headingFont  dark:text-yellow-300"
         >Frequently Asked Questions</motion.h2>
 
         <div className="space-y-4">
-          {dataFAQ.map((faq, i) => (
+          {dataFAQ.map((faq, idx) => (
 
             <motion.div
-              key={i}
+              key={idx}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: i * 0.2 }}
+              transition={{ delay: idx * 0.2 }}
               className="bg-white shadow-lg rounded-lg p-4 cursor-pointer"
-              onClick={() => toggle(i)}
+              onClick={() => toggle(idx)}
             >
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold text-gray-800 font-headingFont">
                   {faq.que}
                 </h3>
                 <span className="text-gray-600">
-                  {selected === i ? "-" : "+"}
+                  {selected === idx ? "-" : "+"}
                 </span>
               </div>
 
@@ -65,8 +65,8 @@ const FAQ = () => {
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{
-                  height: selected === i ? "auto" : 0,
-                  opacity: selected === i ? 1 : 0,
+                  height: selected === idx ? "auto" : 0,
+                  opacity: selected === idx ? 1 : 0,
                 }}
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
