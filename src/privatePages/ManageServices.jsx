@@ -57,7 +57,7 @@ const ManageServices = () => {
         <h1 className="text-4xl font-bold text-center mb-6 text-teal-700 font-headingFont dark:text-[#FFC107]">
           Manage Services
         </h1>
-        <p className='text-center mb-6 text-yellow-200'>Here you can edit, modify update and delete your services!!</p>
+        <p className='text-center mb-6 text-lg dark:text-[#59e3e8]'>Here you can edit, modify update and delete your services!!</p>
          <div className="font-bodyFont grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
          {
                 ManageServices.map(manageService => <ManageServicesCard

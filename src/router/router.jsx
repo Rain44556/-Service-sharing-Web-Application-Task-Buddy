@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import AllServices from "../pages/AllServices";
 import SingleServiceDetails from "../privatePages/SingleServiceDetails";
 import BookService from "../privatePages/BookService";
+import AboutUs from "../pages/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/signin',
         element: <SignIn></SignIn>
+      },
+      {
+        path: '/aboutus',
+        element: <AboutUs></AboutUs>
       },
       {
         path: '/services',

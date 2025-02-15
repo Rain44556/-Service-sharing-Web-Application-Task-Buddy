@@ -8,6 +8,7 @@ const Navbar = () => {
     const menuLinks = <>
         <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/">Home</NavLink>
         <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/services">Services</NavLink>
+        <NavLink className="px-6 py-2 hover:text-white hover:bg-slate-800" to="/aboutus">About Us</NavLink>
     </>
 
     const dashBoardRoutes = <>
