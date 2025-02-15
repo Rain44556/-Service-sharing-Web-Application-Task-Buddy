@@ -4,8 +4,8 @@ import {  FaFacebook, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className=" font-bodyFont bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] text-white py-10 px-20 mt-10">
-      <div className="mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
+    <div className="dark:bg-[#12283F] font-bodyFont bg-[rgb(14,87,100)] text-white py-10 px-20 mt-10">
+      <div className="mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left ">
         
         <div className="flex flex-col items-center md:items-start">
           <img

@@ -45,7 +45,7 @@ useEffect(()=>{
 
 
     return (
-        <div className="navbar font-headingFont mx-auto sticky top-0 z-50 backdrop-blur-md shadow-md lg:px-24">
+        <div className="navbar font-headingFont mx-auto sticky top-0 z-50 backdrop-blur-md shadow-md lg:px-24 dark:bg-[#12283F]">
             <div className="navbar-start">
                 <Link to="/">
                     <img
@@ -55,8 +55,8 @@ useEffect(()=>{
                 </Link>
             </div>
 
-            <div className="navbar-center dark:dark:text-yellow-200 hidden lg:flex p-2 rounded-full font-semibold text-teal-700 ">
-                <ul className="menu menu-horizontal px-1 ">
+            <div className="navbar-center dark:text-white hidden lg:flex p-2 rounded-full font-semibold text-teal-700 ">
+                <ul className="menu menu-horizontal px-1  ">
                     {menuLinks}
 
                     {/* Dashboard */}
@@ -82,7 +82,7 @@ useEffect(()=>{
             <input 
             onClick={()=> setThemeDark(!themeDark)}
             type="checkbox" 
-            className="toggle toggle-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] mr-4" 
+            className="toggle theme-controller mr-4" 
             defaultChecked />
 
                 {/* dropdown menu for small  device */}
@@ -105,7 +105,7 @@ useEffect(()=>{
 
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content text-[rgb(14,87,100)] rounded-box z-[1] mt-3 w-44 px-2 py-5 shadow font-bold">
+                        className="menu menu-sm dropdown-content bg-gray-900 text-[rgb(62,146,159)] rounded-box z-[1] mt-3 w-44 px-2 py-5 shadow font-bold">
                         {menuLinks}
                         {dashBoardRoutes}
                     </ul>
@@ -125,16 +125,16 @@ useEffect(()=>{
                                 </div>
                             </div>
 
-                            <div className="justify-between p-2 mb-2">
+                            <div className="justify-between p-2 mt-2">
                                 {user?.displayName}
                             </div>
 
                             <div><button onClick={handleSignOutUser}
-                                className="btn rounded-md bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] hover:bg-gray-900 text-gray-50 ">
+                                className="btn rounded-md bg-[#FFC107] text-[rgb(14,87,101)] dark:border-yellow-300">
                                 Sign Out</button></div>
 
                         </div>) :
-                        <Link className="btn px-10 py-3 text-white bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)] mx-4 rounded-md" to="/signin">Sign In</Link>
+                        <Link className="btn px-10 py-3 mx-4 rounded-md  bg-[#FFC107] text-[rgb(14,87,101)]" to="/signin">Sign In</Link>
                     }
                 </ul>
             </div>

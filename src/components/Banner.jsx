@@ -30,21 +30,21 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className="relative w-full h-[600px] font-bodyFont">
                         <Lottie animationData={sliderImg} className="w-full h-[500px] object-cover"></Lottie>
-                        <div className="absolute inset-0 bg-gradient-to-r from-teal-600 via-transparent to-teal-800"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-teal-600 via-transparent to-teal-800 dark:bg-gradient-to-r dark:from-teal-100 dark:via-transparent dark:to-teal-200"></div>
                         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
                             <motion.h1
                                 variants={motionFadeIn}
                                 initial="hidden"
                                 animate="visible"
-                                className="text-5xl font-bold mb-4 text-teal-950 font-headingFont">
-                                Unlock Your Potential with <span className="text-6xl text-teal-800">Task Buddy</span>
+                                className="text-5xl font-bold mb-4 text-teal-950 font-headingFont ">
+                                Unlock Your Potential with <span className="text-6xl text-teal-800 dark:text-yellow-100">Task Buddy</span>
                             </motion.h1>
                             <motion.p
                                 variants={motionFadeIn}
                                 initial="hidden"
                                 animate="visible"
                                 transition={{ delay: 0.4 }}
-                                className="text-lg mb-6 text-teal-950 font-bodyFont">
+                                className="text-lg mb-6 text-teal-950 font-bodyFont dark:text-yellow-100">
                                 Giving you access to state of the art digital learning resources.
                             </motion.p>
                             <motion.button

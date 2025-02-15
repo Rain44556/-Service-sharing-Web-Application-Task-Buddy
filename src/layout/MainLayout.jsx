@@ -25,12 +25,12 @@ const MainLayout = () => {
       document.title = currentPageTitle;
     }, [location]);
     return (
-        <div className='dark:bg-gray-900 dark:text-white'>
+        <div className='dark:bg-[#0A192F] dark:text-white'>
           <Navbar></Navbar>
             <div className='max-w-7xl mx-auto'>
             <Outlet></Outlet>
         </div>
-        <Footer></Footer>
+        <Footer className=""></Footer>
         </div>
     );
 };

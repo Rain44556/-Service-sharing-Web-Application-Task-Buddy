@@ -5,7 +5,7 @@ const AllServicesCard = ({service}) => {
     const { _id, serviceImage, serviceName, serviceDescription, serviceArea, serviceProvider, providerImage, providerName, servicePrice } = service;
     // console.log(service)
     return (
-        <div className='bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-start'>
+        <div className='bg-[#F9FAFB] rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-start '>
             
             <img
                 src={serviceImage}
@@ -40,7 +40,7 @@ const AllServicesCard = ({service}) => {
                     {servicePrice} BDT
                   </p>
                 </div>
-               <Link to={`/singleServiceDetails/${_id}`}> <button className="btn px-4 py-2 w-full hover:border-2 hover:border-[#004d4f] hover:text-teal-900 font-bodyFont font-bold mt-4 rounded-lg text-white bg-[#166366] hover:bg-[#618a8c]">
+               <Link to={`/singleServiceDetails/${_id}`}> <button className="btn px-4 py-2 w-full hover:border-2 hover:border-[#004d4f] hover:text-teal-950 dark:hover:bg-[#38A169] font-bodyFont font-bold mt-4 rounded-lg text-white bg-[#166366] hover:bg-[#618a8c]">
                     View Details
                   </button></Link>
               </div>

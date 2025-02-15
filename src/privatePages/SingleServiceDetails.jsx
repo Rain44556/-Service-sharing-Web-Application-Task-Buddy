@@ -7,8 +7,8 @@ const SingleServiceDetails = () => {
     const { _id, serviceImage, serviceName, serviceDescription, serviceArea,servicePrice, serviceProvider} = singleServiceData;
 
     return (
-        <div className="bg-gradient-to-b from-[#EAF6F6] to-[#FDFCFB] min-h-screen">
-      <div className="grid lg:grid-cols-4 gap-5 mx-auto px-6 py-12">
+        <div className="  bg-gradient-to-b from-[#EAF6F6] to-[#FDFCFB] min-h-screen">
+      <div className="dark:bg-[#0A192F] grid lg:grid-cols-4 gap-5 mx-auto px-6 py-12">
 
 
         {/* //-----Single Service Info------/ */}
@@ -27,7 +27,7 @@ const SingleServiceDetails = () => {
         </div>
 
           {/* //-----Provider Info------// */}
-          <div className=" items-center shadow-lg rounded-lg p-4 font-bodyFont bg-[#bdc2c3]">
+          <div className="dark:bg-[#1E293B] items-center shadow-lg rounded-lg p-4 font-bodyFont bg-[#bdc2c3]">
           <h1 className='text-center font-headingFont border-b-2 border-[#3C6E71] font-bold text-lg mt-10 mb-6'>Provider Information</h1>
           <img
             src={serviceProvider.providerImage}
@@ -35,9 +35,9 @@ const SingleServiceDetails = () => {
             className="object-cover rounded-lg border-2 border-[#3C6E71]"
           />
           <div className="text-center mt-8">
-            <h2 className="text-2xl text-[#284B63]"><span className='font-bold font-headingFont'>Name:</span> {serviceProvider.providerName}</h2>
-            <p className="text-[#3C6E71] justify-center mt-2 flex gap-2"><IoLocationSharp size={25} /> 
-              <span className="text-[#3C6E71]"> {serviceArea}</span>
+            <h2 className="text-2xl text-[#284B63] dark:text-white"><span className=' font-bold font-headingFont'>Name:</span> {serviceProvider.providerName}</h2>
+            <p className="text-[#3C6E71] dark:text-yellow-400 justify-center mt-2 flex gap-2"><IoLocationSharp size={25} /> 
+              <span className="text-[#3C6E71] dark:text-white"> {serviceArea}</span>
             </p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 const FAQ = () => {
   const [selected, setSelected] = useState(null);
@@ -32,14 +33,23 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="bg-gray-100 py-12 font-bodyFont dark:bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)]">
+    <div className=" my-10 bg-gray-100 py-12 font-bodyFont dark:bg-gradient-to-r from-[rgb(14,87,101)] to-[rgb(14,87,100)]">
       <div className="max-w-4xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center text-teal-800 mb-6 font-headingFont  dark:text-yellow-300"
-        >Frequently Asked Questions</motion.h2>
+          className="text-4xl text-center font-bold text-teal-800 mb-6 font-headingFont  dark:text-yellow-300 flex gap-2 justify-center"
+        >FQA 
+        <motion.span
+        animate={{rotate: 360}}
+        transition={{duration: 2, repeat: Infinity, repeatType: "loop"}}
+        >
+        <AiOutlineQuestionCircle  
+        size={44} />
+        </motion.span>
+
+        </motion.h2>
 
         <div className="space-y-4">
           {dataFAQ.map((faq, idx) => (
@@ -49,7 +59,7 @@ const FAQ = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: idx * 0.2 }}
-              className="bg-white shadow-lg rounded-lg p-4 cursor-pointer"
+              className="bg-white dark:bg-yellow-100 shadow-lg rounded-lg p-4 cursor-pointer"
               onClick={() => toggle(idx)}
             >
               <div className="flex justify-between items-center">
