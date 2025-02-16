@@ -33,7 +33,7 @@ const AllServices = () => {
         All Services
       </h1>
       <div className="flex justify-center mx-auto items-center">
-        <div className="form-control w-4/5 lg:w-3/5 mx-auto my-7">
+        <div className="form-control w-3/5 my-7">
           <input
             onChange={searchService}
             type="text"
@@ -48,7 +48,7 @@ const AllServices = () => {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-48 p-2 shadow"
+            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-44  p-2 shadow"
           >
             <li>
               <button onClick={() => handleSort("ascending")}>
