@@ -15,6 +15,7 @@ import AllServices from "../pages/AllServices";
 import SingleServiceDetails from "../privatePages/SingleServiceDetails";
 import BookService from "../privatePages/BookService";
 import AboutUs from "../pages/AboutUs";
+import Testimonials from "../pages/Testimonials";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/aboutus',
         element: <AboutUs></AboutUs>
+      },
+      {
+        path: '/testimonials',
+        element: <Testimonials></Testimonials>
       },
       {
         path: '/services',

@@ -30,7 +30,7 @@ const AboutUs = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-4xl font-bold dark:text-[#FFC107] mb-4">
+        <h2 className="text-4xl font-bold text-teal-700 dark:text-[#FFC107] mb-4">
           About Us
         </h2>
         <p className="text-lg mb-6">
