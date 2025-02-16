@@ -9,7 +9,7 @@ import about from "../assets/images/about.jpg"
         "Quickly find the right service providers based on your needs.",
     },
     {
-      title: "Seamless Booking & Transactions",
+      title: "Booking & Transactions Facilities",
       description: "Book, purchase, and manage services effortlessly.",
     },
     {
@@ -17,7 +17,7 @@ import about from "../assets/images/about.jpg"
       description: "Easily add, or remove services anytime.",
     },
     {
-      title: "Status Updates.",
+      title: "Status Updates",
       description:
         "Stay informed by tracking the status of your booked services.",
     },
