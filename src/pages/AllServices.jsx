@@ -61,7 +61,7 @@ const AllServices = () => {
               </button>
             </li>
           </ul>
-        </div>
+        </div>  
       </div>
 
       <div className="max-w-4xl mx-auto px-3">

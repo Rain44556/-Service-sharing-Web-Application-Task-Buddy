@@ -32,7 +32,7 @@ const SignUp = () => {
         UserSignup(email, password)
         .then(result =>{
             const userInDB = {name, email, photo};
-            fetch('http://localhost:5000/users',{
+            fetch('https://task-buddy-server-side.vercel.app/users',{
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

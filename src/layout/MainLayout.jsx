@@ -16,7 +16,7 @@ const MainLayout = () => {
         "/ManageServices": "Manage Services | Task Buddy",
         "/singleServiceDetails/:id": "Single Service Details | Task Buddy",
         "/BookedService": "Booked Service | Task Buddy",
-        "/ServiceToDo": "/Service To-DO | Task Buddy",
+        "/ServiceToDo": "Service To-DO | Task Buddy",
         "/signin": "Signin | Task Buddy ",
         "/signup": "Signup | Task Buddy ",
       };

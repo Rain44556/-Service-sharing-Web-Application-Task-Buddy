@@ -13,7 +13,7 @@ const ServiceToDo = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/myService?email=${user.email}`, {
+        axios.get(`https://task-buddy-server-side.vercel.app/myService?email=${user.email}`, {
             withCredentials: true
         })
             .then(res => setBooked(res.data))
@@ -25,7 +25,7 @@ const ServiceToDo = () => {
 
         const serviceStatus = e.target.value;
 
-        fetch(`http://localhost:5000/bookService/${id}`,{
+        fetch(`https://task-buddy-server-side.vercel.app/bookService/${id}`,{
             method: 'PUT',
             credentials: 'include',
             headers: {
@@ -40,7 +40,7 @@ const ServiceToDo = () => {
                         text: 'Successfully Edited',
                         icon: 'success',
                         confirmButtonText: 'Updated'
-                    }).then(()=>axios.get(`http://localhost:5000/myService?email=${user.email}`, {
+                    }).then(()=>axios.get(`https://task-buddy-server-side.vercel.app/myService?email=${user.email}`, {
                         withCredentials: true
                     })
                         .then(res => setBooked(res.data))
@@ -52,15 +52,15 @@ const ServiceToDo = () => {
 
 
     return (
-        <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-10 font-bodyFont">
-            <h1 className="text-3xl font-bold text-teal-600 text-center mb-8 font-headingFont">
-                My Booked Services
+        <div className="min-h-screen py-10 px-4 sm:px-10 font-bodyFont">
+            <h1 className="text-3xl font-bold text-teal-600 dark:text-yellow-300 text-center mb-8 font-headingFont">
+                Booked Services Status
             </h1>
             {booked.length === 0 ? (
                 <div className="flex flex-col items-center justify-center mt-10">
                     <Lottie animationData={nodataAnimation}></Lottie>
                     <h2 className="text-4xl font-medium text-teal-600">
-                        You Have Not Booked Any Services Yet!
+                        Have Not Booked Any Services Yet!
                     </h2>
                 </div>
             ) : (
@@ -96,7 +96,7 @@ const ServiceToDo = () => {
                                         <select
                                             onChange={(e)=> handleStatusChange(e,service._id)}
                                             value={service.serviceStatus}
-                                            className="select mt-2 select-bordered w-full max-w-xs border-teal-900">
+                                            className="select mt-2 select-bordered w-full text-teal-900 max-w-xs border-teal-900">
 
                                             <option value="Working">Working</option>
                                             <option value="Completed">Completed</option>

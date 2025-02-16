@@ -2,7 +2,7 @@
 * Task-Buddy
 
 # Live Site: 
-* server-side: http://localhost:5000/
+* server-side: https://task-buddy-server-side.vercel.app/
 
 * client-side: https://task-buddy-web-application.web.app/
 

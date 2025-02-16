@@ -12,7 +12,7 @@ const BookedService = () => {
  
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/bookedService?email=${user.email}`,{
+        axios.get(`https://task-buddy-server-side.vercel.app/bookedService?email=${user.email}`,{
             withCredentials: true
         })
         .then(res => setBooked(res.data))
@@ -20,8 +20,8 @@ const BookedService = () => {
 
 
     return (
-            <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-10 font-bodyFont">
-              <h1 className="text-3xl font-bold text-teal-600 text-center mb-8 font-headingFont">
+            <div className="min-h-screen py-10 px-4 sm:px-10 font-bodyFont">
+              <h1 className="text-3xl font-bold dark:text-yellow-300  text-teal-600 text-center mb-8 font-headingFont">
                 My Booked Services
               </h1>
               {booked.length === 0 ? (

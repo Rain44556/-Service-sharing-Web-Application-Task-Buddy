@@ -54,14 +54,14 @@ const AuthProvider = ({ children }) => {
             if (currentUser?.email) {
                 const user = { email: currentUser.email };
 
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://task-buddy-server-side.vercel.app/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data)
                         setLoading(false);
                     })
             }
             else {
-                axios.post('http://localhost:5000/signout', {},
+                axios.post('https://task-buddy-server-side.vercel.app/signout', {},
                     {
                         withCredentials: true
                     })

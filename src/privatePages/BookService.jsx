@@ -35,7 +35,7 @@ const servicePrice = e.target.servicePrice.value;
 
 const bookServices = {serviceId,serviceName,serviceImage,providerEmail,providerName,currentUserEmail,currentUserName,serviceDate,specialInstruction,servicePrice};
 
-fetch('http://localhost:5000/bookService', {
+fetch('https://task-buddy-server-side.vercel.app/bookService', {
 method: "POST",
 credentials: 'include',
 headers: {
@@ -67,15 +67,12 @@ body: JSON.stringify({...bookServices,
 
     return (
         <div>
-        
-            
             <div 
-              
                 className="bg-white rounded-lg p-6 justify-center items-center dark:bg-[#16324F]">
                   <h2 className="text-2xl font-bold mb-4 font-headingFont text-center dark:text-[#FBBF24]">Book Your Choice!</h2>
                   <form onSubmit={handleBookedServices}>
                     <div className="mb-4">
-                      <label className="block text-gray-700 dark:text-[#FBBF24] font-semibold dark:text-[#FBBF24]">Service ID</label>
+                      <label className="block text-gray-700 font-semibold dark:text-[#FBBF24]">Service ID</label>
                       <input
                         type="text"
                         name='serviceId'
