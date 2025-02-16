@@ -32,7 +32,7 @@ const AllServices = () => {
       <h1 className="text-4xl font-bold text-center mb-6 text-teal-700 font-headingFont dark:text-[#FBBF24]">
         All Services
       </h1>
-      <div className="flex justify-center mx-auto items-center">
+      <div className="flex lg:gap-6 justify-center mx-auto items-center">
         <div className="form-control w-3/5 my-7">
           <input
             onChange={searchService}
@@ -43,21 +43,21 @@ const AllServices = () => {
         </div>
 
         <div className="dropdown dropdown-hover dark:text-teal-900">
-          <div tabIndex={0} role="button" className="btn m-1">
-            Hover
+          <div tabIndex={0} role="button" className="btn m-1 lg:w-20">
+            Sort
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-44  p-2 shadow"
+            className=" dropdown-content menu bg-base-100 rounded-box z-[1] w-40 p-2 shadow"
           >
             <li>
-              <button onClick={() => handleSort("ascending")}>
-                Sort by ascending price
+              <button className="font-semibold" onClick={() => handleSort("ascending")}>
+                Ascending price
               </button>
             </li>
             <li>
-              <button onClick={() => handleSort("descending")}>
-                Sort by descending price
+              <button className="font-semibold" onClick={() => handleSort("descending")}>
+                Descending price
               </button>
             </li>
           </ul>
